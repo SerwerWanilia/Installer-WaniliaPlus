@@ -31,7 +31,7 @@ def error(error_message, is_critical=1):
         sys_exit()
 
 
-def get_mods_to_download(remote_mod_urls, local_modlist):
+def get_missing_mods(remote_mod_urls, local_modlist):
     mod_urls = []
     for mod_url in remote_mod_urls:
         if url_to_filename(mod_url) not in local_modlist:
@@ -100,13 +100,11 @@ def install_forge(forge_download_url):
     os.remove(name)
 
 
-def download_mods(modlist, local_mods):
+def download_mods(modlist):
     mod_count = len(modlist)
     mods_downloaded = 0
     for mod_url in modlist:
         mod_name = url_to_filename(mod_url)
-        if mod_name in local_mods:
-            continue
         mods_downloaded += 1
         print(
             f"Pobieranie: {mod_name} ({str(mods_downloaded)}/{str(mod_count)}):")
@@ -277,7 +275,7 @@ if len(incorrect_mods) > 0:
         console=console)
     if user_choice == "T":
         remove_mods(incorrect_mods)
-        get_local_mods()
+        local_mods = get_local_mods()
         clear()
     else:
         sys_exit()
@@ -287,8 +285,8 @@ if mods_already_downloaded(remote_names, local_mods):
 else:
     console.print(
         "[red]●[/red] Znaleziono brakujące mody. Rozpoczęcie pobierania.\n")
-    mods_required = get_mods_to_download(remote_mod_urls, local_mods)
-    download_mods(mods_required, local_mods)
+    missing_mods = get_missing_mods(remote_mod_urls, local_mods)
+    download_mods(missing_mods)
     console.print("[green]●[/green] Pobrano brakujące mody.")
 
 input("\nNaciśnij enter, by zakończyć.")
