@@ -3,6 +3,7 @@
 ![semverrealese](https://img.shields.io/github/v/release/SerwerWanilia/Installer-WaniliaPlus?style=flat-square)
 ![semevertag](https://img.shields.io/github/v/tag/SerwerWanilia/Installer-WaniliaPlus?style=flat-square)
 ![license](https://img.shields.io/github/license/SerwerWanilia/Installer-WaniliaPlus?style=flat-square)
+![downloads](https://img.shields.io/github/downloads/SerwerWanilia/Installer-WaniliaPlus/total?style=flat-square)
 
 Instalator modów w formie CLI napisany w Pythonie na potrzeby serwera Wanilia+.
 
